@@ -26,7 +26,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- * @version 1.1.0
+ * @version 1.1.1
  */
 final class JulGreCalendar {
 

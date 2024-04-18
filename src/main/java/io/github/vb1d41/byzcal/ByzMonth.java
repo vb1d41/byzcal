@@ -22,7 +22,7 @@ package io.github.vb1d41.byzcal;
  * The months of the year are September, October, November, December,
  * January, February, March, April, May, June, July and August.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 public enum ByzMonth {
     /**

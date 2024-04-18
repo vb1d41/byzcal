@@ -25,9 +25,9 @@ import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertTrue;
 
 /**
- * @version 1.1.0
+ * @version 1.1.1
  */
-class ByzDateTest {
+public class ByzDateTest {
 
     static final ByzDate APR_3_7531 = ByzDate.of(7531, ByzMonth.APRIL, 3);
     static final ByzDate APR_4_7531 = ByzDate.of(7531, ByzMonth.APRIL, 4);
@@ -53,7 +53,7 @@ class ByzDateTest {
     }
 
     @Test(dataProvider = "ofYearMonthDay")
-    void testOfYearMonthDay(int year, ByzMonth month, int dayOfMonth) {
+    public void testOfYearMonthDay(int year, ByzMonth month, int dayOfMonth) {
 
         var d = ByzDate.of(year, month, dayOfMonth);
 
@@ -81,7 +81,7 @@ class ByzDateTest {
     }
 
     @Test(dataProvider = "fromGregorian")
-    void testFromGregorian(int greYear, int greMonth, int greDayOfMonth,
+    public void testFromGregorian(int greYear, int greMonth, int greDayOfMonth,
             int byzYear, ByzMonth byzMonth, int byzDayOfMonth) {
 
         var d = ByzDate.fromGregorian(greYear, greMonth, greDayOfMonth);
@@ -92,7 +92,7 @@ class ByzDateTest {
     }
 
     @Test
-    void testOfDate() {
+    public void testOfDate() {
         ByzDate d = APR_3_7531;
 
         assertEquals(d, ByzDate.of(d));
@@ -112,7 +112,7 @@ class ByzDateTest {
     }
 
     @Test(dataProvider = "dayOfWeek")
-    void testDayOfWeek(int year, ByzMonth month, int dayOfMonth,
+    public void testDayOfWeek(int year, ByzMonth month, int dayOfMonth,
             ByzDayOfWeek dayOfWeek) {
 
         var d = ByzDate.of(year, month, dayOfMonth);
@@ -121,7 +121,7 @@ class ByzDateTest {
     }
 
     @Test
-    void testAddYears() {
+    public void testAddYears() {
         ByzDate d1 = APR_3_7531;
         ByzDate d2 = APR_3_7532;
 
@@ -130,7 +130,7 @@ class ByzDateTest {
     }
 
     @Test
-    void testAddMonths() {
+    public void testAddMonths() {
         ByzDate d1 = APR_3_7531;
         ByzDate d2 = MAY_3_7531;
 
@@ -139,7 +139,7 @@ class ByzDateTest {
     }
 
     @Test
-    void testAddDays() {
+    public void testAddDays() {
         ByzDate d1 = APR_3_7531;
         ByzDate d2 = APR_4_7531;
 
@@ -148,7 +148,7 @@ class ByzDateTest {
     }
 
     @Test
-    void testIsEqual() {
+    public void testIsEqual() {
         ByzDate d1 = APR_3_7531;
         ByzDate d2 = APR_3_7531;
         ByzDate d3 = APR_4_7531;
@@ -160,7 +160,7 @@ class ByzDateTest {
     }
 
     @Test
-    void testIsBefore() {
+    public void testIsBefore() {
         ByzDate d1 = APR_3_7531;
         ByzDate d2 = APR_4_7531;
         ByzDate d3 = APR_3_7531;
@@ -172,7 +172,7 @@ class ByzDateTest {
     }
 
     @Test
-    void testIsAfter() {
+    public void testIsAfter() {
         ByzDate d1 = APR_4_7531;
         ByzDate d2 = APR_3_7531;
         ByzDate d3 = APR_4_7531;
@@ -184,7 +184,7 @@ class ByzDateTest {
     }
 
     @Test
-    void testCompareTo() {
+    public void testCompareTo() {
         ByzDate d1 = APR_3_7531;
         ByzDate d2 = APR_4_7531;
         ByzDate d3 = APR_3_7531;
@@ -195,7 +195,7 @@ class ByzDateTest {
     }
 
     @Test
-    void testEquals() {
+    public void testEquals() {
         ByzDate d1 = APR_3_7531;
         ByzDate d2 = APR_3_7531;
         ByzDate d3 = APR_4_7531;
@@ -210,7 +210,7 @@ class ByzDateTest {
     }
 
     @Test
-    void testHashCode() {
+    public void testHashCode() {
         ByzDate d1 = APR_3_7531;
         ByzDate d2 = APR_3_7531;
         ByzDate d3 = APR_4_7531;
@@ -221,7 +221,7 @@ class ByzDateTest {
     }
 
     @Test
-    void testToString() {
+    public void testToString() {
         ByzDate d = APR_3_7531;
 
         assertEquals("APRIL 3, 7531", d.toString());

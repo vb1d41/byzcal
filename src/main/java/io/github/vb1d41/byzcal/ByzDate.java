@@ -24,7 +24,7 @@ import java.time.Month;
  *
  * This class is immutable and thread-safe.
  *
- * @version 1.1.0
+ * @version 1.1.1
  */
 public final class ByzDate implements Comparable<ByzDate> {
 
