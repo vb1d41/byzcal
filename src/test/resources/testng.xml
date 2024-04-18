@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ByzCal" verbose="1">
+  <test name="ByzDate">
+    <classes>
+       <class name="io.github.vb1d41.byzcal.ByzDateTest"/>
+    </classes>
+  </test>
+</suite>
+

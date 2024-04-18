@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.github.vb1d41</groupId>
+  <artifactId>byzcal</artifactId>
+  <version>1.1.0</version>
+
+  <name>ByzCal</name>
+  <description>
+    ByzCal is a java library that implements the Byzantine calendar.
+  </description>
+  <url>https://github.com/vb1d41/byzcal</url>
+  <licenses>
+      <license>
+          <name>Apache License 2.0</name>
+          <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      </license>
+  </licenses>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>17</maven.compiler.release>
+    
+    <x.minRequiredMavenVersion>3.6.3</x.minRequiredMavenVersion>
+
+    <x.testngVersion>7.10.1</x.testngVersion>
+
+    <x.dependencyPluginVersion>3.6.1</x.dependencyPluginVersion>
+    <x.cleanPluginVersion>3.3.2</x.cleanPluginVersion>
+    <x.resourcesPluginVersion>3.3.1</x.resourcesPluginVersion>
+    <x.compilerPluginVersion>3.13.0</x.compilerPluginVersion>
+    <x.surefirePluginVersion>3.2.5</x.surefirePluginVersion>
+    <x.jarPluginVersion>3.4.0</x.jarPluginVersion>
+    <x.installPluginVersion>3.1.1</x.installPluginVersion>
+    <x.deployPluginVersion>3.1.1</x.deployPluginVersion>
+
+    <x.enforcerPluginVersion>3.4.1</x.enforcerPluginVersion>
+    <x.jacocoPluginVersion>0.8.12</x.jacocoPluginVersion>
+    <x.sourcePluginVersion>3.3.1</x.sourcePluginVersion>
+    <x.javadocPluginVersion>3.6.3</x.javadocPluginVersion>
+    <x.pmdPluginVersion>3.21.2</x.pmdPluginVersion>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${x.testngVersion}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${x.dependencyPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>${x.cleanPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${x.resourcesPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${x.compilerPluginVersion}</version>
+          <configuration>
+            <compilerArgs>
+              <arg>-Werror</arg>
+              <arg>-Xlint</arg>
+            </compilerArgs>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${x.surefirePluginVersion}</version>
+          <configuration>
+            <suiteXmlFiles>
+                <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+            </suiteXmlFiles>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${x.jarPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>${x.installPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${x.deployPluginVersion}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>${x.enforcerPluginVersion}</version>
+        <executions>
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>${x.minRequiredMavenVersion}</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${x.jacocoPluginVersion}</version>
+        <executions>
+          <execution>
+            <id>jacoco-init</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>jacoco-report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>${x.sourcePluginVersion}</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${x.javadocPluginVersion}</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>${x.pmdPluginVersion}</version>
+        <configuration>
+            <failOnViolation>true</failOnViolation>
+            <printFailingErrors>true</printFailingErrors>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
