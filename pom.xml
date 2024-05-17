@@ -6,42 +6,41 @@
 
   <groupId>io.github.vb1d41</groupId>
   <artifactId>byzcal</artifactId>
-  <version>1.1.1</version>
+  <version>1.2.0</version>
 
   <name>ByzCal</name>
   <description>
-    ByzCal is a java library that implements the Byzantine calendar.
+    ByzCal is a Java library that implements the Byzantine calendar.
   </description>
   <url>https://github.com/vb1d41/byzcal</url>
   <licenses>
-      <license>
-          <name>Apache License 2.0</name>
-          <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      </license>
+    <license>
+      <name>Apache License 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
   </licenses>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>17</maven.compiler.release>
+    <maven.compiler.release>21</maven.compiler.release>
     
     <x.minRequiredMavenVersion>3.6.3</x.minRequiredMavenVersion>
 
-    <x.testngVersion>7.10.1</x.testngVersion>
+    <x.testngVersion>7.10.2</x.testngVersion>
 
     <x.dependencyPluginVersion>3.6.1</x.dependencyPluginVersion>
     <x.cleanPluginVersion>3.3.2</x.cleanPluginVersion>
     <x.resourcesPluginVersion>3.3.1</x.resourcesPluginVersion>
     <x.compilerPluginVersion>3.13.0</x.compilerPluginVersion>
     <x.surefirePluginVersion>3.2.5</x.surefirePluginVersion>
-    <x.jarPluginVersion>3.4.0</x.jarPluginVersion>
-    <x.installPluginVersion>3.1.1</x.installPluginVersion>
-    <x.deployPluginVersion>3.1.1</x.deployPluginVersion>
+    <x.jarPluginVersion>3.4.1</x.jarPluginVersion>
+    <x.installPluginVersion>3.1.2</x.installPluginVersion>
 
     <x.enforcerPluginVersion>3.4.1</x.enforcerPluginVersion>
     <x.jacocoPluginVersion>0.8.12</x.jacocoPluginVersion>
     <x.sourcePluginVersion>3.3.1</x.sourcePluginVersion>
     <x.javadocPluginVersion>3.6.3</x.javadocPluginVersion>
-    <x.pmdPluginVersion>3.21.2</x.pmdPluginVersion>
+    <x.pmdPluginVersion>3.22.0</x.pmdPluginVersion>
   </properties>
 
   <dependencies>
@@ -94,10 +93,6 @@
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>${x.installPluginVersion}</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>${x.deployPluginVersion}</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -170,8 +165,8 @@
         <artifactId>maven-pmd-plugin</artifactId>
         <version>${x.pmdPluginVersion}</version>
         <configuration>
-            <failOnViolation>true</failOnViolation>
-            <printFailingErrors>true</printFailingErrors>
+          <failOnViolation>true</failOnViolation>
+          <printFailingErrors>true</printFailingErrors>
         </configuration>
         <executions>
           <execution>

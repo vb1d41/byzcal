@@ -1,7 +1,7 @@
 # ByzCal
 
 ## About
-ByzCal is a java library that implements the Byzantine calendar.
+ByzCal is a Java library that implements the Byzantine calendar.
 
 ## Example
 

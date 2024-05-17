@@ -17,7 +17,7 @@
 /**
  * An implementation of the Byzantine calendar.
  *
- * @version 1.1.1
+ * @version 1.2.0
  */
 package io.github.vb1d41.byzcal;
 

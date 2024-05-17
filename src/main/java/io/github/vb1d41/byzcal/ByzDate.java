@@ -17,6 +17,7 @@
 package io.github.vb1d41.byzcal;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.Month;
 
 /**
@@ -24,7 +25,7 @@ import java.time.Month;
  *
  * This class is immutable and thread-safe.
  *
- * @version 1.1.1
+ * @version 1.2.0
  */
 public final class ByzDate implements Comparable<ByzDate> {
 
@@ -55,6 +56,19 @@ public final class ByzDate implements Comparable<ByzDate> {
     }
 
     /**
+     * Returns a copy of the source date.
+     *
+     * @param source the Byzantine date, not null
+     * @return the Byzantine date, not null
+     * @since 1.1.0
+     */
+    public static ByzDate of(ByzDate source) {
+        assert source != null;
+
+        return new ByzDate(source.calendar());
+    }
+
+    /**
      * Creates an instance of ByzDate from the Gregorian date.
      *
      * The minimum supported Gregorian date is October 15, 1582.
@@ -73,15 +87,22 @@ public final class ByzDate implements Comparable<ByzDate> {
     }
 
     /**
-     * Returns a copy of the source date.
+     * Creates an instance of ByzDate from the Gregorian date.
      *
-     * @param source the Byzantine date, not null
+     * The minimum supported Gregorian date is October 15, 1582.
+     *
+     * @param date the date in the Gregorian calendar, not null
      * @return the Byzantine date, not null
+     * @since 1.2.0
      */
-    public static ByzDate of(ByzDate source) {
-        assert source != null;
+    public static ByzDate fromGregorian(LocalDate date) {
+        assert date != null;
 
-        return new ByzDate(source.calendar());
+        int year = date.getYear();
+        int month = date.getMonth().getValue();
+        int dayOfMonth = date.getDayOfMonth();
+
+        return fromGregorian(year, month, dayOfMonth);
     }
 
     /**

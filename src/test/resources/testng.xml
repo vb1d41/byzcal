@@ -4,7 +4,7 @@
 <suite name="ByzCal" verbose="1">
   <test name="ByzDate">
     <classes>
-       <class name="io.github.vb1d41.byzcal.ByzDateTest"/>
+      <class name="io.github.vb1d41.byzcal.ByzDateTest"/>
     </classes>
   </test>
 </suite>

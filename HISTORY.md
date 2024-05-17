@@ -1,3 +1,7 @@
+# 1.2.0
+***May 4, 7532***
+* Added method ByzDate.fromGregorian(LocalDate)
+
 # 1.1.1
 ***April 5, 7532***
 * Minor changes

@@ -24,8 +24,10 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertTrue;
 
+import java.time.LocalDate;
+
 /**
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class ByzDateTest {
 
@@ -34,8 +36,8 @@ public class ByzDateTest {
     static final ByzDate MAY_3_7531 = ByzDate.of(7531, ByzMonth.MAY,   3);
     static final ByzDate APR_3_7532 = ByzDate.of(7532, ByzMonth.APRIL, 3);
 
-    @DataProvider(name = "ofYearMonthDay")
-    public Object[][] ofYearMonthDay() {
+    @DataProvider(name = "of_IntByzMonthInt")
+    public Object[][] of_IntByzMonthInt() {
         return new Object[][] {
             { 7531, ByzMonth.SEPTEMBER, 1 },
             { 7531, ByzMonth.OCTOBER,   1 },
@@ -52,8 +54,8 @@ public class ByzDateTest {
         };
     }
 
-    @Test(dataProvider = "ofYearMonthDay")
-    public void testOfYearMonthDay(int year, ByzMonth month, int dayOfMonth) {
+    @Test(dataProvider = "of_IntByzMonthInt")
+    public void testOf_IntByzMonthInt(int year, ByzMonth month, int dayOfMonth) {
 
         var d = ByzDate.of(year, month, dayOfMonth);
 
@@ -62,8 +64,15 @@ public class ByzDateTest {
         assertEquals(dayOfMonth, d.dayOfMonth());
     }
 
-    @DataProvider(name = "fromGregorian")
-    public Object[][] fromGregorian() {
+    @Test
+    public void testOf_ByzDate() {
+        ByzDate d = APR_3_7531;
+
+        assertEquals(d, ByzDate.of(d));
+    }
+
+    @DataProvider(name = "fromGregorian_IntIntInt")
+    public Object[][] fromGregorian_IntIntInt() {
         return new Object[][] {
             { 2023,  1, 14,  7531, ByzMonth.JANUARY,   1 },
             { 2023,  2, 14,  7531, ByzMonth.FEBRUARY,  1 },
@@ -80,8 +89,8 @@ public class ByzDateTest {
         };
     }
 
-    @Test(dataProvider = "fromGregorian")
-    public void testFromGregorian(int greYear, int greMonth, int greDayOfMonth,
+    @Test(dataProvider = "fromGregorian_IntIntInt")
+    public void testFromGregorian_IntIntInt(int greYear, int greMonth, int greDayOfMonth,
             int byzYear, ByzMonth byzMonth, int byzDayOfMonth) {
 
         var d = ByzDate.fromGregorian(greYear, greMonth, greDayOfMonth);
@@ -92,10 +101,15 @@ public class ByzDateTest {
     }
 
     @Test
-    public void testOfDate() {
-        ByzDate d = APR_3_7531;
+    public void testFromGregorian_LocalDate() {
+        int year = 2023;
+        int month = 4;
+        int dayOfMonth = 16;
 
-        assertEquals(d, ByzDate.of(d));
+        var d1 = ByzDate.fromGregorian(year, month, dayOfMonth);
+        var d2 = ByzDate.fromGregorian(LocalDate.of(year, month, dayOfMonth));
+
+        assertEquals(d1, d2);
     }
 
     @DataProvider(name = "dayOfWeek")
