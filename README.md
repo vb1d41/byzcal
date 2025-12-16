@@ -8,9 +8,19 @@ ByzCal is a Java library that implements the Byzantine calendar.
 ```java
 System.out.println(ByzDate.fromGregorian(2023, 4, 16));
 ```
-
 ```
 APRIL 3, 7531
+```
+
+## Build
+
+On Unix/Linux:
+```
+./mvnw clean install
+```
+On Windows:
+```
+mvnw.cmd clean install
 ```
 
 ## License
