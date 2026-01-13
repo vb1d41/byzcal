@@ -25,7 +25,7 @@ import java.time.Month;
  *
  * This class is immutable and thread-safe.
  *
- * @version 1.2.0
+ * @version 1.2.1
  */
 public final class ByzDate implements Comparable<ByzDate> {
 
@@ -34,6 +34,14 @@ public final class ByzDate implements Comparable<ByzDate> {
     private final ByzMonth month;
     private final int dayOfMonth;
     private final ByzDayOfWeek dayOfWeek;
+
+    private ByzDate(CalendarAdapter calendar) {
+        this.milliseconds = calendar.milliseconds();
+        this.year = toByzYear(calendar.year(), calendar.month());
+        this.month = toByzMonth(calendar.month());
+        this.dayOfMonth = calendar.dayOfMonth();
+        this.dayOfWeek = toByzDayOfWeek(calendar.dayOfWeek());
+    }
 
     /**
      * Creates an instance of ByzDate.
@@ -48,7 +56,7 @@ public final class ByzDate implements Comparable<ByzDate> {
     public static ByzDate of(int year, ByzMonth month, int dayOfMonth) {
         assert month != null;
 
-        var calendar = new JulGreCalendar();
+        var calendar = new CalendarAdapter();
         calendar.switchToPureJulian();
         calendar.set(toCalYear(year, month), toCalMonth(month), dayOfMonth);
 
@@ -79,7 +87,7 @@ public final class ByzDate implements Comparable<ByzDate> {
      * @return the Byzantine date, not null
      */
     public static ByzDate fromGregorian(int year, int month, int dayOfMonth) {
-        var calendar = new JulGreCalendar();
+        var calendar = new CalendarAdapter();
         calendar.set(year, month, dayOfMonth);
         calendar.switchToPureJulian();
 
@@ -233,8 +241,8 @@ public final class ByzDate implements Comparable<ByzDate> {
     @Override
     public boolean equals(Object other) {
         return other != null
-            && getClass() == other.getClass()
-            && isEqual((ByzDate) other);
+                && getClass() == other.getClass()
+                && isEqual((ByzDate) other);
     }
 
     /**
@@ -295,19 +303,10 @@ public final class ByzDate implements Comparable<ByzDate> {
         };
     }
 
-    private ByzDate(JulGreCalendar calendar) {
-        this.milliseconds = calendar.milliseconds();
-        this.year = toByzYear(calendar.year(), calendar.month());
-        this.month = toByzMonth(calendar.month());
-        this.dayOfMonth = calendar.dayOfMonth();
-        this.dayOfWeek = toByzDayOfWeek(calendar.dayOfWeek());
-    }
-
-    private JulGreCalendar calendar() {
-        var calendar = new JulGreCalendar();
+    private CalendarAdapter calendar() {
+        var calendar = new CalendarAdapter();
         calendar.switchToPureJulian();
         calendar.set(this.milliseconds);
         return calendar;
     }
 }
-

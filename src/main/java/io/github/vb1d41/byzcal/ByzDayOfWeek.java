@@ -22,7 +22,7 @@ package io.github.vb1d41.byzcal;
  * The days of the week are Lordsday, Second, Third, Fourth, Fifth,
  * Preparation and Sabbath.
  *
- * @version 1.2.0
+ * @version 1.2.1
  */
 public enum ByzDayOfWeek {
     /**
@@ -54,4 +54,3 @@ public enum ByzDayOfWeek {
      */
     SABBATH;
 }
-

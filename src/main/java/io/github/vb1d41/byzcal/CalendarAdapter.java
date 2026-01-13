@@ -18,7 +18,6 @@ package io.github.vb1d41.byzcal;
 
 import java.time.DayOfWeek;
 import java.time.Month;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -26,14 +25,15 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- * @version 1.2.0
+ * @version 1.2.1
  */
-final class JulGreCalendar {
+final class CalendarAdapter {
 
     private final GregorianCalendar calendar;
 
-    public JulGreCalendar() {
-        this.calendar = makeCalendar();
+    public CalendarAdapter() {
+        var timeZone = TimeZone.getTimeZone("GMT0");
+        this.calendar = new GregorianCalendar(timeZone, Locale.US);
         this.calendar.clear();
     }
 
@@ -60,7 +60,8 @@ final class JulGreCalendar {
     }
 
     public Month month() {
-        return Month.of(this.calendar.get(Calendar.MONTH) + 1);
+        int calendarMonth = this.calendar.get(Calendar.MONTH); // [0,11]
+        return Month.of(calendarMonth + 1);
     }
 
     public int dayOfMonth() {
@@ -68,7 +69,9 @@ final class JulGreCalendar {
     }
 
     public DayOfWeek dayOfWeek() {
-        DayOfWeek dayOfWeek = switch(this.calendar.get(Calendar.DAY_OF_WEEK)) {
+        int calendarDayOfWeek = this.calendar.get(Calendar.DAY_OF_WEEK);
+
+        DayOfWeek dayOfWeek = switch (calendarDayOfWeek) {
             case Calendar.SUNDAY -> DayOfWeek.SUNDAY;
             case Calendar.MONDAY -> DayOfWeek.MONDAY;
             case Calendar.TUESDAY -> DayOfWeek.TUESDAY;
@@ -78,6 +81,7 @@ final class JulGreCalendar {
             case Calendar.SATURDAY -> DayOfWeek.SATURDAY;
             default -> null;
         };
+
         assert dayOfWeek != null;
         return dayOfWeek;
     }
@@ -86,24 +90,18 @@ final class JulGreCalendar {
         return this.calendar.getTimeInMillis();
     }
 
-    public JulGreCalendar addYears(int years) {
+    public CalendarAdapter addYears(int years) {
         this.calendar.add(Calendar.YEAR, years);
         return this;
     }
 
-    public JulGreCalendar addMonths(int months) {
+    public CalendarAdapter addMonths(int months) {
         this.calendar.add(Calendar.MONTH, months);
         return this;
     }
 
-    public JulGreCalendar addDays(int days) {
+    public CalendarAdapter addDays(int days) {
         this.calendar.add(Calendar.DAY_OF_MONTH, days);
         return this;
     }
-
-    private static GregorianCalendar makeCalendar() {
-        var timeZone = TimeZone.getTimeZone("GMT0");
-        return new GregorianCalendar(timeZone, Locale.US);
-    }
 }
-

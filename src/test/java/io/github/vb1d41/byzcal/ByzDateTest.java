@@ -16,9 +16,6 @@
 
 package io.github.vb1d41.byzcal;
 
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertNotEquals;
@@ -26,8 +23,11 @@ import static org.testng.Assert.assertTrue;
 
 import java.time.LocalDate;
 
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 /**
- * @version 1.2.0
+ * @version 1.2.1
  */
 public class ByzDateTest {
 
@@ -115,13 +115,13 @@ public class ByzDateTest {
     @DataProvider(name = "dayOfWeek")
     public Object[][] dayOfWeek() {
         return new Object[][] {
-            { 7531, ByzMonth.APRIL, 3, ByzDayOfWeek.LORDSDAY },
-            { 7531, ByzMonth.APRIL, 4, ByzDayOfWeek.SECOND },
-            { 7531, ByzMonth.APRIL, 5, ByzDayOfWeek.THIRD },
-            { 7531, ByzMonth.APRIL, 6, ByzDayOfWeek.FOURTH },
-            { 7531, ByzMonth.APRIL, 7, ByzDayOfWeek.FIFTH },
+            { 7531, ByzMonth.APRIL, 3, ByzDayOfWeek.LORDSDAY    },
+            { 7531, ByzMonth.APRIL, 4, ByzDayOfWeek.SECOND      },
+            { 7531, ByzMonth.APRIL, 5, ByzDayOfWeek.THIRD       },
+            { 7531, ByzMonth.APRIL, 6, ByzDayOfWeek.FOURTH      },
+            { 7531, ByzMonth.APRIL, 7, ByzDayOfWeek.FIFTH       },
             { 7531, ByzMonth.APRIL, 8, ByzDayOfWeek.PREPARATION },
-            { 7531, ByzMonth.APRIL, 9, ByzDayOfWeek.SABBATH }
+            { 7531, ByzMonth.APRIL, 9, ByzDayOfWeek.SABBATH     }
         };
     }
 
@@ -241,4 +241,3 @@ public class ByzDateTest {
         assertEquals("APRIL 3, 7531", d.toString());
     }
 }
-

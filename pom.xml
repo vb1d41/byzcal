@@ -6,7 +6,7 @@
 
   <groupId>io.github.vb1d41</groupId>
   <artifactId>byzcal</artifactId>
-  <version>1.2.0</version>
+  <version>1.2.1</version>
 
   <name>ByzCal</name>
   <description>
@@ -26,7 +26,7 @@
     
     <x.minRequiredMavenVersion>3.6.3</x.minRequiredMavenVersion>
 
-    <x.testngVersion>7.10.2</x.testngVersion>
+    <x.testngVersion>7.11.0</x.testngVersion>
 
     <x.dependencyPluginVersion>3.9.0</x.dependencyPluginVersion>
     <x.cleanPluginVersion>3.5.0</x.cleanPluginVersion>

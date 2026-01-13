@@ -1,19 +1,35 @@
+# 1.2.1
+
+**_December 31, 7534_**
+
+- Updated dependency and plugin versions.
+
 # 1.2.0
-***May 4, 7532***
-* Added method ByzDate.fromGregorian(LocalDate)
+
+**_May 4, 7532_**
+
+- Added method ByzDate.fromGregorian(LocalDate)
 
 # 1.1.1
-***April 5, 7532***
-* Minor changes
+
+**_April 5, 7532_**
+
+- Minor changes
 
 # 1.1.0
-***April 5, 7532***
-* Added method ByzDate.of(ByzDate)
+
+**_April 5, 7532_**
+
+- Added method ByzDate.of(ByzDate)
 
 # 1.0.1
-***March 31, 7532***
-* Minor changes
+
+**_March 31, 7532_**
+
+- Minor changes
 
 # 1.0.0
-***October 4, 7532***
-* First release
+
+**_October 4, 7532_**
+
+- First release
